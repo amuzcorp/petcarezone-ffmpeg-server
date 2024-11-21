@@ -58,13 +58,13 @@ app.post("/convert", upload.single("file"), async (req, res) => {
             })
             .on("error", (err) => {
                 console.error("Error during conversion:", err.message);
-                res.status(500).send("Error converting video.");
+                res.status(500).send(`Error converting video. ${err.message}`);
                 fs.unlinkSync(webmFilePath); // WebM 파일 삭제
             })
             .run();
     } catch (error) {
         console.error("Error processing file:", error);
-        res.status(500).send("Failed to process the file.");
+        res.status(500).send(`Failed to process the file. ${error}`);
     }
 });
 
