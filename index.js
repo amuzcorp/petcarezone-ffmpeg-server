@@ -23,6 +23,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const server = createServer(app);
 
+server.setTimeout(30 * 60 * 1000); //    10분
+
 const upload = multer({ dest: "/tmp" }); // 파일 업로드 경로를 '/tmp'로 설정
 
 app.get("/", (req, res) => res.send("펫케어 서버"));
