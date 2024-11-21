@@ -23,14 +23,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const server = createServer(app);
 
-const upload = multer({ dest: "uploads/" }); // 업로드 임시 디렉토리 설정
+const upload = multer({ dest: "tmp/" }); // 업로드 임시 디렉토리 설정
 
 app.get("/", (req, res) => res.send("펫케어 서버"));
 
 app.post("/convert", upload.single("file"), async (req, res) => {
     try {
         const webmFilePath = req.file.path; // 업로드된 WebM 파일 경로
-        const mp4FilePath = path.join("uploads", `${Date.now()}.mp4`); // 변환된 MP4 파일 경로
+        const mp4FilePath = path.join("tmp", `${Date.now()}.mp4`); // 변환된 MP4 파일 경로
 
         // FFmpeg 변환 시작
         ffmpeg()
