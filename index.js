@@ -39,6 +39,8 @@ app.post("/convert", upload.single("file"), async (req, res) => {
         ffmpeg()
             .input(webmFilePath)
             .output(mp4FilePath) // 출력 파일 경로
+            .outputOptions("-preset ultrafast") // 빠른 변환 설정
+            .outputOptions("-threads 4") 
             .noAudio()
             .videoCodec("libx264") // H.264 코덱
             .videoBitrate("400k")
