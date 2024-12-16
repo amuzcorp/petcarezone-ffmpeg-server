@@ -11,6 +11,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const allowedOrigins = [
     "http://localhost:5173",
     "https://amuzcorp-pet-care-zone-webview.vercel.app",
+    "https://petcarezone.amuz.kr"
 ];
 
 const corsOptions = {
